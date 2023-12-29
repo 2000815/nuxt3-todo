@@ -26,12 +26,7 @@ import { reactive } from "vue";
 import { useTodoStore } from "@/src/store/todoListStore";
 
 const state = reactive({ newTodoLabel: "" });
-
-// useTodoStore を呼び出すだけで、グローバルストアへのアクセスが可能
 const store = useTodoStore();
-
-// ストア内の State や Getters はリアクティブオブジェクトなので、
-// リアクティブを失わずに取り出す場合は storeToRefs を用いる
 const { filteredTodos, filter } = storeToRefs(store);
 
 const toggleTodo = (id: number) => store.toggleTodo(id);

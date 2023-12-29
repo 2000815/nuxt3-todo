@@ -7,10 +7,7 @@ type TODO = {
   finished: boolean;
 };
 
-// defineStore 関数を用いてストアを作成する
-// 第一引数 "todos" はアプリケーション全体でストアを特定するためのユニークキー
 export const useTodoStore = defineStore("todos", {
-  // State は初期値を返す関数を定義する
   state: () => {
     return {
       filter: "all" as FilterType,
@@ -18,8 +15,6 @@ export const useTodoStore = defineStore("todos", {
       nextId: 0,
     };
   },
-  // getters は state 及び他の getter へのアクセスが可能
-  // getter は全て computed 扱いになるため、引数に応じて結果を差し替える場合は関数を戻す
   getters: {
     findTodo(state) {
       return (id: number): TODO => {
