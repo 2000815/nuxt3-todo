@@ -1,19 +1,18 @@
 <template>
   <div>
-    <Task />
-    <TodoForm />
+    <AddTodo />
+    <TodoList />
   </div>
 </template>
 
 <script>
-import Task from "`/src/components/Task";
-import TodoForm from "@/components/TodoForm";
+import AddTodo from "@/src/components/AddTodo.vue";
+import TodoList from "@/src/components/TodoList.vue";
 
 export default {
-  name: "TodoApp",
   components: {
-    Task,
-    TodoForm,
+    AddTodo,
+    TodoList,
   },
 };
 </script>
