@@ -2,7 +2,7 @@
   <div>
     <div class="todo-form">
       <input v-model="newTodoLabel" placeholder="Add a new todo" />
-      <button @click="addTodo">Add</button>
+      <Button type="add-button" @click="addTodo">Add</Button>
     </div>
   </div>
 </template>
@@ -10,6 +10,7 @@
 <script setup>
 import { ref } from "vue";
 import { useTodoStore } from "@/src/store/todoListStore";
+import Button from "@/src/components/molecules/Button.vue";
 
 const newTodoLabel = ref("");
 const store = useTodoStore();
