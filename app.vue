@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <AddTodo />
     <TodoList />
   </div>
@@ -16,3 +16,8 @@ export default {
   },
 };
 </script>
+
+<style>
+.layout {
+}
+</style>
