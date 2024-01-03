@@ -17,11 +17,8 @@ export const useTodoStore = defineStore("todos", {
   },
   getters: {
     findTodo(state) {
-      return (id: number): TODO => {
-        const todo = state.todos.find((todo) => todo.id === id);
-        if (todo === undefined) throw new Error("todo not found");
-
-        return todo;
+      return (id: number): TODO | undefined => {
+        return state.todos.find((todo) => todo.id === id);
       };
     },
     finishedTodos(state) {
@@ -41,14 +38,27 @@ export const useTodoStore = defineStore("todos", {
       }
     },
   },
-  // mutations が存在しないので、State の更新は全て actions で行う
   actions: {
     addTodo(label: string) {
       this.todos.push({ id: this.nextId++, label, finished: false });
     },
     toggleTodo(id: number) {
       const todo = this.findTodo(id);
-      todo.finished = !todo.finished;
+
+      if (todo !== undefined) {
+        todo.finished = !todo.finished;
+      } else {
+        console.error("Todo not found for id:", id);
+      }
+    },
+    deleteTodo(id: number) {
+      const todoIndex = this.todos.findIndex((todo) => todo.id === id);
+
+      if (todoIndex !== -1) {
+        this.todos.splice(todoIndex, 1);
+      } else {
+        console.error("Todo not found for id:", id);
+      }
     },
   },
 });

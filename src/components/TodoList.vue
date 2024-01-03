@@ -1,41 +1,73 @@
 <template>
   <div>
-    <input id="all" type="radio" v-model="filter" value="all" />
-    <label for="all">All</label>
-    <input id="finished" type="radio" v-model="filter" value="finished" />
-    <label for="finished">Finished</label>
-    <input id="unfinished" type="radio" v-model="filter" value="unfinished" />
-    <label for="unfinished">Unfinished</label>
-
     <ul>
       <li
         :class="{ todo: true, finished: todo.finished }"
-        :key="todo.label"
+        :key="todo.id"
         v-for="todo in filteredTodos"
-        v-text="todo.label"
         @click="toggleTodo(todo.id)"
-      />
+        :id="todo.id"
+      >
+        <div class="todo-content">
+          <p v-text="todo.label"></p>
+          <button @click="deleteTodo(todo.id)">Delete</button>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useTodoStore } from "@/src/store/todoListStore";
 
 const store = useTodoStore();
 const { filteredTodos, filter } = store;
 
 const toggleTodo = (id) => store.toggleTodo(id);
+const deleteTodo = (id) => store.deleteTodo(id);
 </script>
 
 <style scoped>
 .todo {
   user-select: none;
   cursor: pointer;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+  list-style: none;
 }
+
+.todo:hover {
+  background-color: #ececec;
+}
+
 .todo.finished {
   text-decoration: line-through;
   color: gray;
+}
+
+.todo-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d32f2f;
+}
+
+ul {
+  padding-left: 0;
 }
 </style>
