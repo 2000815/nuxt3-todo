@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import AddTodo from "@/src/components/AddTodo.vue";
-import TodoList from "@/src/components/TodoList.vue";
+import AddTodo from "@/src/components/organisms/AddTodo.vue";
+import TodoList from "@/src/components/organisms/TodoList.vue";
 
 export default {
   components: {

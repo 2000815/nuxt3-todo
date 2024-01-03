@@ -10,7 +10,9 @@
       >
         <div class="todo-content">
           <p v-text="todo.label"></p>
-          <button @click="deleteTodo(todo.id)">Delete</button>
+          <Button type="delete-button" @click="deleteTodo(todo.id)"
+            >Delete</Button
+          >
         </div>
       </li>
     </ul>
@@ -19,6 +21,7 @@
 
 <script setup>
 import { useTodoStore } from "@/src/store/todoListStore";
+import Button from "@/src/components/molecules/Button.vue";
 
 const store = useTodoStore();
 const { filteredTodos, filter } = store;
