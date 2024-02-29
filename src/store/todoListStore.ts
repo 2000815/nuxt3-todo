@@ -12,20 +12,21 @@ export const useTodoStore = defineStore("todos", {
     return {
       filter: "all" as FilterType,
       todos: [] as TODO[],
+      // [{id:1,label:"string",finished: false},{id:2,label:"string2",finished: true}]
       nextId: 0,
     };
   },
   getters: {
     findTodo(state) {
       return (id: number): TODO | undefined => {
-        return state.todos.find((todo) => todo.id === id);
+        return state.todos.find((todo: TODO) => todo.id === id);
       };
     },
     finishedTodos(state) {
-      return state.todos.filter((todo) => todo.finished);
+      return state.todos.filter((todo: TODO) => todo.finished);
     },
     unfinishedTodos(state) {
-      return state.todos.filter((todo) => !todo.finished);
+      return state.todos.filter((todo: TODO) => !todo.finished);
     },
     filteredTodos(state): TODO[] {
       switch (state.filter) {
@@ -52,7 +53,7 @@ export const useTodoStore = defineStore("todos", {
       }
     },
     deleteTodo(id: number) {
-      const todoIndex = this.todos.findIndex((todo) => todo.id === id);
+      const todoIndex = this.todos.findIndex((todo: TODO) => todo.id === id);
 
       if (todoIndex !== -1) {
         this.todos.splice(todoIndex, 1);

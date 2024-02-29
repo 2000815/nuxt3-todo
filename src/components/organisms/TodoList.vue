@@ -24,7 +24,7 @@ import { useTodoStore } from "@/src/store/todoListStore";
 import Button from "@/src/components/molecules/Button.vue";
 
 const store = useTodoStore();
-const { filteredTodos, filter } = store;
+const { filteredTodos } = store;
 
 const toggleTodo = (id) => store.toggleTodo(id);
 const deleteTodo = (id) => store.deleteTodo(id);
