@@ -21,6 +21,8 @@ const addTodo = () => {
     newTodoLabel.value = "";
   }
 };
+
+// これはテストでコメントを作成しています。
 </script>
 
 <style scoped>
