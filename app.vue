@@ -17,7 +17,4 @@ export default {
 };
 </script>
 
-<style>
-.layout {
-}
-</style>
+<style></style>
